@@ -1,0 +1,55 @@
+body {
+    background-color: #eef3fb;   /* cool light blue */
+    font-family: Arial, sans-serif;
+}
+
+.outer-box {
+    width: 450px;
+    margin: 40px auto;
+    background-color: #e6e0f8;   /* lavender professional */
+    padding: 30px;
+    border-radius: 12px;
+}
+
+.form-box {
+    text-align: center;
+    color: #2e2e2e;   /* dark text for professionalism */
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    font-size: 18px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 80%;
+    padding: 8px;
+    margin-top: 6px;
+    border-radius: 6px;
+    border: none;
+    background-color: #eaf2ff;  /* cool instead of white */
+}
+
+.gender-box,
+.interest-box {
+    background-color: #eaf2ff;  /* cool light blue */
+    color: #000;
+    padding: 12px;
+    margin: 10px auto;
+    width: 80%;
+    border-radius: 6px;
+}
+
+button {
+    margin-top: 22px;
+    padding: 10px 45px;
+    background-color: #8b5a2b;  /* brown register */
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
