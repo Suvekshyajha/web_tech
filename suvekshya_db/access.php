@@ -1,21 +1,23 @@
 <?php
-echo "<h2>Access Modifiers</h2>";
+echo "<h2>Access Modifiers + Getter/Setter with Inheritance & Polymorphism</h2>";
 
 class Lecturer {
-    public $name;
-    protected $subject;
-    private $salary;
+    public $name;          // public → accessed anywhere
+    protected $subject;    // protected → accessed in child classes
+    private $salary;       // private → accessed via getter/setter
 
     function __construct($name, $subject, $salary) {
         $this->name = $name;
         $this->subject = $subject;
-        $this->setSalary($salary);
+        $this->setSalary($salary); // setter used
     }
 
+    // Setter (for private property)
     function setSalary($salary) {
-        if($salary > 0) $this->salary = $salary;
+        $this->salary = $salary;
     }
 
+    // Getter (for private property)
     function getSalary() {
         return $this->salary;
     }
@@ -34,6 +36,7 @@ class Parttime extends Lecturer {
     }
 
     function getInfo() {
+        // accessing protected + getter
         echo "Part-time: $this->name | $this->subject | Rs.".$this->getSalary()." | Hours: $this->hours<br>";
     }
 }
@@ -51,10 +54,10 @@ class Fulltime extends Lecturer {
     }
 }
 
-// Different inputs
-$l  = new Lecturer("Anita", "Computer", 45000);
-$pt = new Parttime("Ramesh", "Account", 18000, 10);
-$ft = new Fulltime("Sunita", "Management", 55000, "BBA");
+// Objects
+$l  = new Lecturer("Ram", "Math", 40000);
+$pt = new Parttime("Sita", "English", 20000, 12);
+$ft = new Fulltime("Hari", "Science", 60000, "BCA");
 
 // Output
 $l->getInfo();
