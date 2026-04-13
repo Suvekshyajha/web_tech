@@ -1,63 +1,56 @@
 <?php
-echo "<h2>Inheritance and Polymorphism Demo</h2>";
+echo "<h2>Inheritance & Polymorphism</h2>";
 
 class Lecturer {
-    public $name;
-    public $subject;
-    public $salary;
+    public $name, $subject, $salary;
 
-    function __construct($name, $subject, $salary) {
-        $this->name    = $name;
-        $this->subject = $subject;
-        $this->salary  = $salary;
+    function __construct($n, $s, $sal) {
+        $this->name = $n;
+        $this->subject = $s;
+        $this->salary = $sal;
     }
 
     function getInfo() {
-        echo " <b>Lecturer</b> | Name: $this->name | Subject: $this->subject | Salary: Rs.$this->salary <br>";
+        echo "Lecturer: $this->name | $this->subject | Rs.$this->salary <br>";
     }
 }
 
 class Parttime extends Lecturer {
-    public $hoursPerWeek;
+    public $hours;
 
-    function __construct($name, $subject, $salary, $hoursPerWeek) {
-        parent::__construct($name, $subject, $salary);
-        $this->hoursPerWeek = $hoursPerWeek;
-        echo " Parttime object created for: <b>$name</b> (inherits from Lecturer)<br>";
+    function __construct($n, $s, $sal, $h) {
+        parent::__construct($n, $s, $sal);
+        $this->hours = $h;
     }
 
-    // Polymorphism - same method name, different output
     function getInfo() {
-        echo " <b>Part-time</b> | Name: $this->name | Subject: $this->subject | Salary: Rs.$this->salary | Hours/Week: $this->hoursPerWeek <br>";
+        echo "Part-time: $this->name | $this->subject | Rs.$this->salary | Hours: $this->hours <br>";
     }
 }
 
 class Fulltime extends Lecturer {
-    public $department;
+    public $dept;
 
-    function __construct($name, $subject, $salary, $department) {
-        parent::__construct($name, $subject, $salary);
-        $this->department = $department;
-        echo " Fulltime object created for: <b>$name</b> (inherits from Lecturer)<br>";
+    function __construct($n, $s, $sal, $d) {
+        parent::__construct($n, $s, $sal);
+        $this->dept = $d;
     }
 
-    // Polymorphism - same method name, different output
     function getInfo() {
-        echo " <b>Full-time</b> | Name: $this->name | Subject: $this->subject | Salary: Rs.$this->salary | Department: $this->department <br>";
+        echo "Full-time: $this->name | $this->subject | Rs.$this->salary | Dept: $this->dept <br>";
     }
 }
 
-echo "<h3>--- Creating Objects ---</h3>";
-$l  = new Lecturer("Mr. Sharma", "Math",    50000);
-$pt = new Parttime("Ms. Sita",   "English", 20000, 15);
-$ft = new Fulltime("Mr. Hari",   "Science", 60000, "BCA");
+// Objects
+$l  = new Lecturer("Sharma", "Math", 50000);
+$pt = new Parttime("Sita", "English", 20000, 15);
+$ft = new Fulltime("Hari", "Science", 60000, "BCA");
 
-echo "<h3>--- Calling getInfo() — Polymorphism in action ---</h3>";
-echo "Same method getInfo() gives different output for each class:<br><br>";
+// Polymorphism
 $l->getInfo();
 $pt->getInfo();
 $ft->getInfo();
 
-echo "<br> Inheritance: Parttime and Fulltime reuse name, subject, salary from Lecturer<br>";
-echo " Polymorphism: All three use getInfo() but each prints differently<br>";
+echo "<br>Inheritance: Child classes reuse properties<br>";
+echo "Polymorphism: Same method (getInfo) behaves differently";
 ?>
