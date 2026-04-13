@@ -1,75 +1,63 @@
 <?php
-echo "<h2>Access Modifiers, Getter and Setter Demo</h2>";
+echo "<h2>Access Modifiers</h2>";
 
 class Lecturer {
-    public    $name;      // accessible anywhere
-    protected $subject;   // accessible in class + child only
-    private   $salary;    // accessible in this class only
+    public $name;
+    protected $subject;
+    private $salary;
 
     function __construct($name, $subject, $salary) {
-        $this->name    = $name;
+        $this->name = $name;
         $this->subject = $subject;
-        $this->salary  = $salary;
+        $this->setSalary($salary);
     }
 
     function setSalary($salary) {
-        if ($salary > 0) {
-            $this->salary = $salary;
-            echo " Salary updated to: Rs.<b>$salary</b><br>";
-        } else {
-            echo "Invalid salary! Must be greater than 0.<br>";
-        }
+        if($salary > 0) $this->salary = $salary;
     }
 
     function getSalary() {
         return $this->salary;
     }
 
-    function setSubject($subject) {
-        $this->subject = $subject;
-        echo " Subject updated to: <b>$subject</b><br>";
+    function getInfo() {
+        echo "Lecturer: $this->name | $this->subject | Rs.".$this->getSalary()."<br>";
+    }
+}
+
+class Parttime extends Lecturer {
+    private $hours;
+
+    function __construct($name, $subject, $salary, $hours) {
+        parent::__construct($name, $subject, $salary);
+        $this->hours = $hours;
     }
 
-    function getSubject() {
-        return $this->subject;
+    function getInfo() {
+        echo "Part-time: $this->name | $this->subject | Rs.".$this->getSalary()." | Hours: $this->hours<br>";
     }
 }
 
 class Fulltime extends Lecturer {
-    public $department;
+    private $dept;
 
-    function __construct($name, $subject, $salary, $department) {
+    function __construct($name, $subject, $salary, $dept) {
         parent::__construct($name, $subject, $salary);
-        $this->department = $department;
+        $this->dept = $dept;
     }
 
     function getInfo() {
-        // protected $subject accessible here, private $salary is NOT
-        echo "🏢 Name: $this->name | Subject: $this->subject | Department: $this->department<br>";
+        echo "Full-time: $this->name | $this->subject | Rs.".$this->getSalary()." | Dept: $this->dept<br>";
     }
 }
 
-$ft = new Fulltime("Mr. Hari", "Science", 60000, "BCA");
+// Different inputs
+$l  = new Lecturer("Anita", "Computer", 45000);
+$pt = new Parttime("Ramesh", "Account", 18000, 10);
+$ft = new Fulltime("Sunita", "Management", 55000, "BBA");
 
-echo "<h3>--- Displaying Info ---</h3>";
+// Output
+$l->getInfo();
+$pt->getInfo();
 $ft->getInfo();
-
-echo "<h3>--- Getter: Reading Private Salary ---</h3>";
-echo "Current Salary: Rs.<b>" . $ft->getSalary() . "</b><br>";
-
-echo "<h3>--- Setter: Updating Salary ---</h3>";
-$ft->setSalary(75000);
-echo "New Salary: Rs.<b>" . $ft->getSalary() . "</b><br>";
-
-echo "<h3>--- Setter: Invalid Salary ---</h3>";
-$ft->setSalary(-500);
-
-echo "<h3>--- Setter: Updating Subject ---</h3>";
-$ft->setSubject("Physics");
-echo " New Subject: <b>" . $ft->getSubject() . "</b><br>";
-
-echo "<h3>--- Access Modifier Test ---</h3>";
-echo " Public  — \$ft->name    = " . $ft->name . "<br>";
-echo " Protected — \$ft->subject is not directly accessible outside class<br>";
-echo "Private  — \$ft->salary  is not directly accessible outside class<br>";
 ?>
