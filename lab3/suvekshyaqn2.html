@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Table using Div</title>
+    <style>
+      .row {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        /* Removed border from row to avoid double borders */
+      }
+      .th {
+        border: 1px solid black; /* Keep border only on cells */
+        font-weight: bold;
+        text-align: center;
+        padding: 6px;
+        background: green;
+      }
+      .td {
+        border: 1px solid black; /* Keep border only on cells */
+        text-align: center;
+        padding: 6px;
+      }
+    </style>
+  </head>
+  
+  <body>
+    <div class="row">      
+      <div class="th">S.N</div>
+      <div class="th">Name</div>
+      <div class="th">Project Name</div>
+      <div class="th">Roll_Number</div>
+      <div class="th">Remarks</div>
+    </div>
+    <div class="row">
+      <div class="td">1</div>
+      <div class="td">SARA</div>
+      <div class="td">website</div>
+      <div class="td">101</div>
+      <div class="td">GOOD</div>
+    </div>
+    <div class="row">
+      <div class="td">2</div>
+      <div class="td">tARA</div>
+      <div class="td">E-website</div>
+      <div class="td">102</div>
+      <div class="td">GOOD</div>
+    </div>
+    <div class="row">
+      <div class="td">3</div>
+      <div class="td">ZARA</div>
+      <div class="td">game</div>
+      <div class="td">103</div>
+      <div class="td">average</div>
+    </div>
+    <div class="row">
+      <div class="td">4</div>
+      <div class="td">1ARA</div>
+      <div class="td">game</div>
+      <div class="td">104</div>
+      <div class="td">avg</div>
+    </div>
+  </body>
+</html>

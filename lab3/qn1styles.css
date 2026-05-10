@@ -1,0 +1,61 @@
+body {
+        padding: 25px;
+        font-family: sans-serif; /* Added for better readability */
+      }
+
+      .navbar {
+        border: 2px solid red;
+        text-align: center;
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+
+      /* OUTER LAYOUT */
+      .layout {
+        display: grid;
+        grid-template-columns: 1fr 4fr 1fr; /* left ad | products | right ad */
+        gap: 10px;
+        /* align-items: start;  <-- REMOVED THIS so columns stretch to equal height */
+        height: 600px; /* Optional: Set a fixed height if you want to force a size, otherwise it scales with content */
+      }
+
+      /* PRODUCT BOX */
+      .box {
+        border: 2px solid black;
+        padding: 10px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        /* Added this to make rows equal height filling the container */
+        grid-template-rows: repeat(3, 1fr); 
+        gap: 10px;
+        height: 100%; /* Fills the .layout height */
+        box-sizing: border-box; /* Ensures padding doesn't overflow width/height */
+      }
+
+      /* PRODUCT */
+      .product {
+        border: 1px solid gray;
+        /* padding: 15px; */
+        text-align: center;
+        background-color: orange;
+        /* Flexbox helps center text vertically and horizontally */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
+      }
+
+      /* ADS */
+      .ad {
+        border: 2px solid blue;
+        /* padding: 20px; */
+        text-align: center;
+        background-color: yellow;
+        height: 100%;
+        /* Center text in ad */
+        display: flex; 
+        align-items: center; 
+        justify-content: center;
+        box-sizing: border-box;
+      }
